@@ -1,0 +1,77 @@
+{
+  "commit": "335dbe759a8710a43b1809c7fcf02cdbc078fb53",
+  "porta": 18091,
+  "saude": {
+    "status": "UP"
+  },
+  "agua4": {
+    "observacaoId": 5,
+    "alertaId": 1,
+    "bairro": "Vila Mariana",
+    "prioridade": "BAIXA",
+    "pontos": 3,
+    "motivos": [
+      "Impacto 1 de 3. 4 cm de água sobre a via (simulação).",
+      "Leitura nos últimos 30 minutos (+1).",
+      "Sem confirmação independente (+0)."
+    ]
+  },
+  "agua22": {
+    "observacaoId": 6,
+    "alertaId": 1,
+    "bairro": "Vila Mariana",
+    "prioridade": "ALTA",
+    "pontos": 7,
+    "motivos": [
+      "Impacto 3 de 3. 22 cm de água sobre a via (simulação).",
+      "Leitura nos últimos 30 minutos (+1).",
+      "Sem confirmação independente (+0)."
+    ]
+  },
+  "calor35": {
+    "observacaoId": 7,
+    "alertaId": 2,
+    "bairro": "Saúde",
+    "prioridade": "ALTA",
+    "pontos": 7,
+    "motivos": [
+      "Impacto 3 de 3. Zona urbana 35 °C e referência 30 °C. Diferença de 5 °C (par simulado).",
+      "Leitura nos últimos 30 minutos (+1).",
+      "Sem confirmação independente (+0)."
+    ]
+  },
+  "ativosAntes": 2,
+  "historico": [
+    {
+      "id": 4,
+      "valor": 0,
+      "unidade": "mm",
+      "origem": "PUBLICA"
+    },
+    {
+      "id": 3,
+      "valor": 29.1,
+      "unidade": "°C",
+      "origem": "PUBLICA"
+    },
+    {
+      "id": 2,
+      "valor": 33.02,
+      "unidade": "mm",
+      "origem": "PUBLICA"
+    },
+    {
+      "id": 1,
+      "valor": 21.4,
+      "unidade": "°C",
+      "origem": "PUBLICA"
+    }
+  ],
+  "recibo": {
+    "id": 8,
+    "alertaId": 3
+  },
+  "desconectou": true,
+  "reenvioHttp": 200,
+  "ativosDepois": 3
+}

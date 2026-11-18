@@ -24,12 +24,15 @@ java -jar target/risco-urbano-1.0.0.jar --spring.profiles.active=demo
 
 Deixe esse terminal aberto. O perfil `demo` habilita a entrada de sensores simulados. A API escuta em `127.0.0.1:8080`. Iniciá-la sempre a partir de `backend` reutiliza o arquivo de banco em `backend/data`. Em Linux ou macOS, o wrapper correspondente é `./mvnw`.
 
+Na máquina preparada para a demonstração, a API também pode estar em segundo plano. A partir da raiz, use `.\scripts\api-apresentacao.ps1 status` para consultar a instância preparada. O mesmo script aceita `iniciar` e `parar` e mantém o mesmo banco entre as duas ações.
+
 **2. Inicie o aplicativo.** Abra um Android Emulator com Expo Go da série 57. Use outro terminal na raiz:
 
 ```powershell
 cd mobile
 npm ci
-npm start -- --localhost
+$env:EXPO_OFFLINE = '1'
+npm start -- --localhost --no-dev
 ```
 
 Com o Android conectado ao `adb`, encaminhe a porta do Metro para o aparelho e abra o projeto pelo Expo Go. Para a API o Android Emulator usa `10.0.2.2:8080`, endereço especial que alcança o loopback do computador. A URL está configurada por plataforma. [Rede do Android Emulator](https://developer.android.com/studio/run/emulator-networking-address)
@@ -105,3 +108,14 @@ npm test
 ```
 
 O Maven gera os relatórios de testes em `backend/target/surefire-reports/` e os resultados de carga em `backend/target/indicadores/`. A comparação de prioridade usa os 21 casos previamente rotulados do arquivo `backend/src/test/resources/casos-prioridade.csv`. O teste de reinício executa duas JVMs sobre o mesmo arquivo H2.
+
+## Se algo mudar durante o ensaio
+
+| Sintoma | Verificação |
+| --- | --- |
+| O Expo Go abre, mas o painel continua desconectado | Execute `node scripts/demo.mjs saude` na raiz. Se houver resposta, confira a URL usada pelo Android e qualquer variável `EXPO_PUBLIC_API_URL` deixada no terminal. Reinicie o Metro após trocar a URL. |
+| O app está conectado, mas ainda não há alertas | O histórico oficial é de 2025. Envie `node scripts/demo.mjs agua 4` e aguarde o próximo ciclo de consulta. |
+| O alerta apareceu sem notificação do sistema | Nas preferências do sino, confira a permissão. Para testar a transição, espere o app mostrar 4 cm e então envie 22 cm. A primeira carga e os ciclos seguintes de um alerta que já está alto não geram outro aviso. |
+| A API voltou com dados diferentes | Confira diretório de execução e valor de `RISCO_DB_URL`. Reinicie o mesmo JAR sobre o mesmo arquivo usado antes da queda. |
+
+Os procedimentos e medições realizados estão no [registro de verificação](docs/verificacao.md).

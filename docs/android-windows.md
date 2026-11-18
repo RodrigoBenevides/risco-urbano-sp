@@ -28,8 +28,7 @@ adb -s emulator-5564 shell am start -a android.intent.action.VIEW -d exp://127.0
 O ensaio automatizado usa o mesmo AVD sem janela. Para projetá-lo e controlá-lo pelo mouse nessa situação, o computador preparado também contém o scrcpy portátil. Mantenha a mesma sessão PowerShell configurada:
 
 ```powershell
-$env:ADB = Join-Path $env:ANDROID_HOME 'platform-tools\adb.exe'
-& "$env:ANDROID_HOME\espelhamento\scrcpy-win64-v5.0.1\scrcpy.exe" -s emulator-5564 --no-audio --window-title "Risco Urbano SP"
+.\scripts\mostrar-android.ps1 -Serial emulator-5564
 ```
 
 Em outro computador, instale Android Studio com Android Emulator e Platform Tools, crie um dispositivo virtual Android compatível, instale nele o Expo Go 57.0.9 e use os comandos do README. Para instalar o APK oficial previamente baixado, use `adb install -r CAMINHO_DO_APK`. No emulador, o app acessa a API do computador em `10.0.2.2:8080`. Em aparelho físico USB, use o encaminhamento das duas portas descrito no README. [Android Emulator](https://developer.android.com/studio/run/emulator) · [Cliente Expo Go 57.0.9](https://github.com/expo/expo-go-releases/releases/tag/Expo-Go-57.0.9) · [scrcpy para Windows](https://github.com/Genymobile/scrcpy/blob/master/doc/windows.md)
