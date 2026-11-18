@@ -210,7 +210,7 @@ export function Conexao({
           testID="tentar-novamente"
           label="Tentar novamente"
           onPress={atualizar}
-          style={{ paddingHorizontal: 6 }}
+          style={{ minWidth: 48, alignItems: 'center', paddingHorizontal: 6 }}
         >
           <Icon name="rotate-cw" color={cor} />
         </Tap>
