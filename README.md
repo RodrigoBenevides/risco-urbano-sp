@@ -4,7 +4,7 @@ Aplicativo de monitoramento de alagamentos, calor urbano e interrupções de ene
 
 Projeto da Global Solution 2026.2 de **Advanced Programming And Mobile Dev**, Engenharia da Computação, FIAP.
 
-[Android já preparado neste computador](docs/android-windows.md) · [Roteiro da apresentação](docs/apresentacao.md) · [Guia de arquitetura e regras](docs/arquitetura.md)
+[Painel no Android](docs/evidencias/android/painel-apresentacao.png) · [Android já preparado neste computador](docs/android-windows.md) · [Roteiro da apresentação](docs/apresentacao.md) · [Guia de arquitetura e regras](docs/arquitetura.md)
 
 ## Integrantes
 

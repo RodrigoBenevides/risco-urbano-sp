@@ -1,12 +1,22 @@
 # Verificação da entrega
 
-Ensaios locais em Windows 11, Java 21 e Node 24. O Android do ensaio é um dispositivo virtual AOSP API 33 x86_64. Os resultados dependem desta máquina, da carga concorrente e da versão do aplicativo.
+Ensaios locais realizados em 18/11/2026 em Windows 11, Java 21 e Node 24. O Android do ensaio é um dispositivo virtual AOSP API 33 x86_64. Os resultados dependem desta máquina, da carga concorrente e da versão do aplicativo.
+
+| Indicador | Resultado |
+| --- | --- |
+| Atualização no Android | 20/20 novas observações exibidas. Mediana de 3,041 s, p95 de 3,145 s e máximo de 3,171 s na revisão final, incluindo a sondagem ADB. [Amostras finais](evidencias/android/atualizacao-final.json) |
+| Qualidade da priorização | 21/21 cenários rotulados corretamente. Precisão e revocação de 100% para a classe alta na rubrica simulada. [Classificações](evidencias/api/classificacoes.csv) |
+| Facilidade de uso | 3/3 tarefas técnicas concluídas. Abrir o alerta levou 3,012 s, consultar a fonte oficial 5,259 s e registrar a falta de energia 17,279 s. Tempos de automação no Android, sem participantes humanos. [Tarefas](evidencias/android/tarefas.json) |
 
 ## Execução seguindo o README
 
 Um clone local limpo da revisão `335dbe759a8710a43b1809c7fcf02cdbc078fb53` passou pelo Maven Wrapper (`clean verify`, 29/29), `npm ci`, TypeScript, ESLint, Jest (21/21 em cinco suítes), checagem de compatibilidade do Expo e exportação do bundle Android Hermes. O npm auditou 966 pacotes e retornou zero vulnerabilidades nessa verificação. A exportação é uma evidência de empacotamento do JavaScript. A evidência de execução no sistema Android vem do ensaio no AVD.
 
 Os seis comandos do emissor foram repetidos com o JAR do clone em uma porta isolada. A leitura de 4 cm criou o alerta 1, a de 22 cm manteve o mesmo ID e elevou a pontuação de 3 para 7. O relato 8 permaneceu ligado ao alerta 3 após parar e reiniciar a JVM. Seu reenvio retornou HTTP 200 com os mesmos IDs. O Git do clone permaneceu limpo no início e no fim. [Respostas do ensaio do clone](evidencias/api/ensaio-clone.json)
+
+Após ampliar para 48 dp o botão de reconexão em `b544ad2`, TypeScript, ESLint e os 21 testes móveis passaram novamente no clone. No AVD com densidade de 320 dpi, a área conferida foi de 96 × 96 pixels, inclusive com fonte do sistema ampliada para 130%. [Medição no dispositivo](evidencias/android/fonte-e-filtros.json)
+
+No fechamento, o computador de apresentação recebeu um banco separado do banco de medições. O controle PowerShell iniciou, parou e reiniciou a API em uma porta de teste e preservou o alerta. Na porta 8080, o Android abriu o painel com duas novas leituras de demonstração: água de 4 cm na Vila Mariana e diferença térmica de 3 °C na Saúde. O scrcpy recebeu o vídeo do mesmo AVD em uma gravação local de teste. [Painel conectado no banco de apresentação](evidencias/android/painel-apresentacao.png)
 
 ## API e dados
 
@@ -41,13 +51,7 @@ O navegador não registrou erros de JavaScript durante esse fluxo. As larguras d
 
 ## Aplicativo e apresentação
 
-No emulador Android 13, o ensaio mediu **20 observações novas detectadas em 20 envios**. Do retorno do POST à leitura do identificador na interface, a mediana foi **3,025 s**, o p95 foi **3,101 s** e o máximo foi **3,110 s**. As amostras são sequenciais e incluem a própria sondagem da árvore Android. [Amostras e durações das sondagens](evidencias/android/atualizacao.json)
-
-O app recuperou a conexão automaticamente em **3/3 reinícios reais**. Após a API responder à verificação de saúde, a detecção na interface levou 4,406 s, 3,108 s e 2,495 s. Em todos os ciclos, os IDs das observações permaneceram iguais. Os limites superiores para a exibição da queda pela árvore Android foram 4,200 s, 4,440 s e 6,933 s. A terceira leitura ultrapassou a meta interna de 6 s por esse método. [Registro dos três ciclos](evidencias/android/ciclos.json)
-
-Em três novos ciclos, uma captura dos pixels do banner pelo ADB detectou a mudança de cor em 2,411 s, 2,648 s e 2,645 s após a parada. O retorno após saúde UP levou 1,388 s, 1,416 s e 1,717 s. A leitura posterior do rótulo confirmou o significado de cada cor. A diferença entre os métodos mostra o custo de aguardar uma árvore de acessibilidade completa.
-
-O ensaio técnico de facilidade de uso concluiu **3/3 tarefas** no dispositivo: abrir o alerta de prioridade alta a partir do aviso em 3,012 s e um toque, consultar uma observação oficial em 6,138 s e um toque, e registrar falta de energia em 17,559 s, com quatro toques, uma rolagem, digitação e retorno do teclado. Os tempos incluem ações e inspeções por ADB. A amostra é um ensaio automatizado do fluxo. Não foram recrutados moradores para um estudo de usabilidade. [Tarefas cronometradas](evidencias/android/tarefas.json)
+O ensaio no Android manteve os mesmos IDs em três reinícios do backend e completou duas passagens de apresentação com uma nova observação após cada retorno. Uma detecção de queda pela árvore de acessibilidade levou 6,933 s, acima da meta interna de 6 s. Na contraprova visual, o banner mudou em até 2,648 s nos três ciclos adicionais. Os resultados de atualização, os tempos das três tarefas, as capturas e o comando de reprodução estão no [ensaio Android](evidencias/android/README.md).
 
 | Requisito | Onde está | Como conferir |
 | --- | --- | --- |
@@ -58,14 +62,4 @@ O ensaio técnico de facilidade de uso concluiu **3/3 tarefas** no dispositivo: 
 | Desconexão e disponibilidade | `monitor.ts`, `storage.ts`, rótulo de conexão e hora da última atualização | Na abertura sem servidor nem cache, o app indicou a falta de dados. Após a primeira carga, parar a API conservou a navegação e os dados recebidos. [Abertura sem cache](evidencias/android/01-inicio-sem-cache.png) · [Servidor desconectado](evidencias/android/03-desconectado.png) |
 | Código no mesmo repositório, evolução e defesa | `backend/`, `mobile/`, README, guia oral e histórico Git | No clone, usar as instruções do README e repetir o [roteiro](apresentacao.md). O histórico contém incrementos reais de código, dados, teste e revisão no aparelho. |
 
-**App em segundo plano e encerrado.** Durante seis segundos após uma nova leitura em cada condição, o Android não recebeu notificação do novo ID. Ao retornar do HOME e ao reabrir após encerramento forçado, o aplicativo restabeleceu a consulta, identificou a alta e permitiu abrir os alertas 97 e 98. A bandeja recebe notificações locais após uma consulta feita pelo app. Não existe push remoto para um processo encerrado. [Ensaio de ciclo de vida](evidencias/android/ciclo-de-vida.json) · [Permissão e toque na bandeja](evidencias/android/notificacoes.json)
-
-### Como repetir a medição de atualização
-
-Use um banco de demonstração, mantenha o app em primeiro plano e abra o detalhe do alagamento na Vila Mariana. Role até que a evidência mais recente, com o número da observação, esteja na área visível. A partir da raiz, com Python 3 e ADB disponíveis:
-
-```powershell
-python scripts/medir-android.py --adb B:\GS2-Android-Tools\platform-tools\adb.exe --serial emulator-5564 --amostras 20 --saida .execucao\atualizacao-repetida.json
-```
-
-Cada POST traz uma observação nova. O script inicia um relógio monotônico após ler o recibo e para ao encontrar exatamente aquela observação na hierarquia de acessibilidade Android. O resultado inclui o custo da coleta ADB, IDs, duração das sondagens e tentativas sem leitura. Percentis são calculados sobre observações detectadas, com contagem de perdas à parte. O valor medido é um limite superior para a primeira exibição do dado. Para reproduzir o ensaio de qualidade e carga, execute o Maven Wrapper pelo README. Para a avaliação de uso, siga as tarefas no Android e registre tempo e ações até a confirmação na tela.
+Em segundo plano e com o processo encerrado, o app aguardou a reabertura para consultar os novos eventos. Os testes de permissão, toque e retomada registraram os IDs dos alertas na API e na interface. [Ciclo de vida](evidencias/android/ciclo-de-vida.json) · [Permissões](evidencias/android/notificacoes.json)
