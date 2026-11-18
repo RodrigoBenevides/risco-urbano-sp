@@ -1,9 +1,19 @@
 import * as N from 'expo-notifications';
+import { isRunningInExpoGo } from 'expo';
 import { Linking, PermissionsAndroid, Platform } from 'react-native';
 import { Alerta, nomeTipo } from './domain';
 
 export type Permissao = 'concedida' | 'pendente' | 'negada' | 'indisponivel';
 const canal = 'alertas-urbanos';
+async function prepararCanal() {
+  // O Expo Go 57 delega a emissão ao canal do cliente; seu gerenciador de canais próprios falha.
+  if (isRunningInExpoGo()) return null;
+  await N.setNotificationChannelAsync(canal, {
+    name: 'Riscos de prioridade alta',
+    importance: N.AndroidImportance.HIGH,
+  });
+  return { channelId: canal };
+}
 N.setNotificationHandler({
   handleNotification: async () => ({
     shouldShowBanner: true,
@@ -26,10 +36,7 @@ export async function pedirPermissao(): Promise<Permissao> {
     if (resposta === PermissionsAndroid.RESULTS.NEVER_ASK_AGAIN) await Linking.openSettings();
     return resposta === PermissionsAndroid.RESULTS.GRANTED ? 'concedida' : 'negada';
   }
-  await N.setNotificationChannelAsync(canal, {
-    name: 'Riscos de prioridade alta',
-    importance: N.AndroidImportance.HIGH,
-  });
+  await prepararCanal();
   const atual = await N.getPermissionsAsync();
   if (!atual.granted && !atual.canAskAgain) {
     await Linking.openSettings();
@@ -40,10 +47,7 @@ export async function pedirPermissao(): Promise<Permissao> {
 }
 export async function emitir(a: Alerta) {
   if ((await permissao()) !== 'concedida') return;
-  await N.setNotificationChannelAsync(canal, {
-    name: 'Riscos de prioridade alta',
-    importance: N.AndroidImportance.HIGH,
-  });
+  const trigger = await prepararCanal();
   await N.scheduleNotificationAsync({
     identifier: 'alerta-' + a.id,
     content: {
@@ -51,7 +55,7 @@ export async function emitir(a: Alerta) {
       body: nomeTipo[a.tipo] + ' · ' + a.titulo,
       data: { alertaId: a.id },
     },
-    trigger: { channelId: canal },
+    trigger,
   });
 }
 export function observarToques(abrir: (id: number) => void) {

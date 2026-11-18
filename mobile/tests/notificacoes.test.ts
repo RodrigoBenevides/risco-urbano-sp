@@ -1,6 +1,8 @@
 import * as N from 'expo-notifications';
+import { isRunningInExpoGo } from 'expo';
 import { emitir, observarToques } from '../src/notificacoes';
 import { alerta } from './cenarios';
+jest.mock('expo', () => ({ isRunningInExpoGo: jest.fn(() => false) }));
 
 jest.mock('expo-notifications', () => ({
   AndroidImportance: { HIGH: 4 },
@@ -26,6 +28,13 @@ test('respeita recusa e envia notificação ao canal com ID do alerta quando aut
       trigger: { channelId: 'alertas-urbanos' },
     }),
   );
+});
+test('Expo Go apresenta pelo canal padrão sem invocar o gerenciador de canais próprios', async () => {
+  jest.mocked(isRunningInExpoGo).mockReturnValueOnce(true);
+  jest.mocked(N.getPermissionsAsync).mockResolvedValueOnce({ granted:true } as N.NotificationPermissionsStatus);
+  await emitir(alerta);
+  expect(N.setNotificationChannelAsync).not.toHaveBeenCalled();
+  expect(N.scheduleNotificationAsync).toHaveBeenCalledWith(expect.objectContaining({trigger:null}));
 });
 test('um toque no aviso nativo abre o alerta correto uma vez e remove o listener ao sair', () => {
   const r: N.NotificationResponse = {
