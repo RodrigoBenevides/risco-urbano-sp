@@ -1,24 +1,57 @@
 import * as N from 'expo-notifications';
+import { Linking, PermissionsAndroid, Platform } from 'react-native';
 import { Alerta, nomeTipo } from './domain';
 
 export type Permissao = 'concedida' | 'pendente' | 'negada' | 'indisponivel';
 const canal = 'alertas-urbanos';
-N.setNotificationHandler({ handleNotification: async () => ({ shouldShowBanner: true, shouldShowList: true, shouldPlaySound: false, shouldSetBadge: false }) });
+N.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowBanner: true,
+    shouldShowList: true,
+    shouldPlaySound: false,
+    shouldSetBadge: false,
+  }),
+});
 export async function permissao(): Promise<Permissao> {
+  if (Platform.OS === 'android' && Number(Platform.Version) >= 33) {
+    const concedida = await PermissionsAndroid.check(PermissionsAndroid.PERMISSIONS.POST_NOTIFICATIONS);
+    return concedida ? 'concedida' : 'pendente';
+  }
   const p = await N.getPermissionsAsync();
   return p.granted ? 'concedida' : p.status === 'denied' ? 'negada' : 'pendente';
 }
 export async function pedirPermissao(): Promise<Permissao> {
-  await N.setNotificationChannelAsync(canal, { name: 'Riscos de prioridade alta', importance: N.AndroidImportance.HIGH });
+  if (Platform.OS === 'android' && Number(Platform.Version) >= 33) {
+    const resposta = await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.POST_NOTIFICATIONS);
+    if (resposta === PermissionsAndroid.RESULTS.NEVER_ASK_AGAIN) await Linking.openSettings();
+    return resposta === PermissionsAndroid.RESULTS.GRANTED ? 'concedida' : 'negada';
+  }
+  await N.setNotificationChannelAsync(canal, {
+    name: 'Riscos de prioridade alta',
+    importance: N.AndroidImportance.HIGH,
+  });
+  const atual = await N.getPermissionsAsync();
+  if (!atual.granted && !atual.canAskAgain) {
+    await Linking.openSettings();
+    return 'negada';
+  }
   await N.requestPermissionsAsync();
   return permissao();
 }
 export async function emitir(a: Alerta) {
-  if (await permissao() !== 'concedida') return;
+  if ((await permissao()) !== 'concedida') return;
+  await N.setNotificationChannelAsync(canal, {
+    name: 'Riscos de prioridade alta',
+    importance: N.AndroidImportance.HIGH,
+  });
   await N.scheduleNotificationAsync({
     identifier: 'alerta-' + a.id,
-    content: { title: 'Prioridade alta · ' + a.bairro, body: nomeTipo[a.tipo] + ' · ' + a.titulo, data: { alertaId: a.id } },
-    trigger: { channelId: canal }
+    content: {
+      title: 'Prioridade alta · ' + a.bairro,
+      body: nomeTipo[a.tipo] + ' · ' + a.titulo,
+      data: { alertaId: a.id },
+    },
+    trigger: { channelId: canal },
   });
 }
 export function observarToques(abrir: (id: number) => void) {
@@ -31,7 +64,9 @@ export function observarToques(abrir: (id: number) => void) {
       abrir(id);
       void N.clearLastNotificationResponseAsync().catch(() => {});
       // O mesmo evento pode voltar a alta em outro momento.
-      setTimeout(() => { ultimo = ''; }, 1000);
+      setTimeout(() => {
+        ultimo = '';
+      }, 1000);
     }
   }
   const s = N.addNotificationResponseReceivedListener(verificar);

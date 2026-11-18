@@ -6,8 +6,8 @@
     "version": "1.0.0",
     "userInterfaceStyle": "light",
     "orientation": "default",
-    "android": {"package":"br.ac.fiap.riscourbanosp"},
+    "android": { "package": "br.ac.fiap.riscourbanosp" },
     "plugins": ["expo-notifications"],
-    "web": {"bundler":"metro"}
+    "web": { "bundler": "metro" }
   }
 }
