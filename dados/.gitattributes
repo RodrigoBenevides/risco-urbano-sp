@@ -1,0 +1,3 @@
+# Preserve the bytes used by the manifest, including on Windows.
+congonhas-2025.csv -text
+sao-paulo-ibge.json -text
