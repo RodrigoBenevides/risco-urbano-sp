@@ -4,6 +4,8 @@ Aplicativo de monitoramento de alagamentos, calor urbano e interrupções de ene
 
 Projeto da Global Solution 2026.2 de **Advanced Programming And Mobile Dev**, Engenharia da Computação, FIAP.
 
+[Android já preparado neste computador](docs/android-windows.md) · [Roteiro da apresentação](docs/apresentacao.md) · [Guia de arquitetura e regras](docs/arquitetura.md)
+
 ## Integrantes
 
 A identificação acadêmica aguarda os nomes completos e RMs fornecidos pelo grupo.
@@ -52,6 +54,28 @@ node scripts/demo.mjs historico
 
 O emissor imprime os IDs da observação e do alerta. As leituras de água são em centímetros na Vila Mariana. O exemplo de calor compara 35 °C na Saúde com uma referência simulada de 30 °C no mesmo instante. É possível mudar o servidor do emissor com a variável `API_URL`.
 
+## O que observar na demonstração
+
+O painel consulta a API ao abrir, ao retornar ao primeiro plano e três segundos após concluir cada ciclo de consulta. Uma requisição tem timeout de dois segundos. O app mantém uma cópia local com a hora da última atualização. Ao parar apenas a JVM, o painel sinaliza a queda e os dados anteriores continuam disponíveis. Reiniciar a API com o mesmo arquivo H2 permite retomar o acompanhamento automaticamente.
+
+O primeiro carregamento estabelece a referência para as notificações. A entrada de um alerta em prioridade alta produz um aviso no aplicativo. Com permissão concedida, o Android também recebe uma notificação local que abre o detalhe. Com o aplicativo em segundo plano ou encerrado, a consulta periódica fica suspensa. Esta versão foi projetada para acompanhamento com a tela do app aberta.
+
+A gravidade mede o impacto, de 1 a 3. A prioridade combina esse impacto com atualidade e confirmação independente. A confiança descreve a procedência de cada observação. Assim, um relato isolado de falta de energia há 65 minutos tem impacto 3, confiança baixa e prioridade média. Os limiares, a pontuação e o escopo da simulação estão no [guia para a defesa](docs/arquitetura.md).
+
+## Contrato da API
+
+| Operação | Uso |
+| --- | --- |
+| `GET /actuator/health` | Verificar se a API está pronta. |
+| `GET /api/alertas` | Consultar alertas ativos por prioridade, com filtros opcionais `bairro`, `tipo`, `prioridade`, `page` e `size`. |
+| `GET /api/alertas/{id}` | Obter o detalhe com as evidências do episódio e os motivos da classificação. |
+| `GET /api/resumo` | Consultar totais com o mesmo recorte de atividade do painel. |
+| `GET /api/observacoes?origem=PUBLICA` | Consultar as medições históricas importadas. |
+| `POST /api/relatos` | Gravar ocorrência comunitária com `chave` UUID, `tipo`, `bairro` e, para energia, `duracaoMinutos`. |
+| `POST /api/demo/sensores` | Enviar uma leitura simulada a partir do computador da API, com o perfil `demo` ativo. |
+
+As gravações retornam HTTP 201 e os IDs de observação e alerta. Repetir a mesma chave com o mesmo conteúdo retorna HTTP 200 e os mesmos IDs. Reutilizá-la com outro conteúdo retorna 409. A API limita cada página a 50 registros e os corpos JSON a 8 KiB. A configuração de exemplo do app fica em `mobile/.env.example`. O backend aceita `RISCO_DB_URL`, `RISCO_DB_USER` e `RISCO_DB_PASSWORD` no ambiente do processo.
+
 ## Organização
 
 | Local | Responsabilidade |
@@ -79,3 +103,5 @@ npm run typecheck
 npm run lint
 npm test
 ```
+
+O Maven gera os relatórios de testes em `backend/target/surefire-reports/` e os resultados de carga em `backend/target/indicadores/`. A comparação de prioridade usa os 21 casos previamente rotulados do arquivo `backend/src/test/resources/casos-prioridade.csv`. O teste de reinício executa duas JVMs sobre o mesmo arquivo H2.
