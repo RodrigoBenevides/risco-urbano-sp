@@ -6,6 +6,10 @@ Projeto da Global Solution 2026.2 de **Advanced Programming And Mobile Dev**, En
 
 [Painel no Android](docs/evidencias/android/painel-apresentacao.png) · [Android já preparado neste computador](docs/android-windows.md) · [Roteiro da apresentação](docs/apresentacao.md) · [Guia de arquitetura e regras](docs/arquitetura.md)
 
+## Vídeo de demonstração
+
+A gravação mostra o alerta de alagamento subir de prioridade no Android, o registro comunitário, o histórico de Congonhas e a recuperação do aplicativo após a queda da API. São 3min23s, com legendas em português e sem áudio. [Baixar a demonstração em MP4 (28,4 MB)](https://github.com/RodrigoBenevides/risco-urbano-sp/releases/download/demonstracao-v1/Demonstracao_Risco_Urbano_SP.mp4)
+
 ## Integrantes
 
 | Nome completo | RM |
