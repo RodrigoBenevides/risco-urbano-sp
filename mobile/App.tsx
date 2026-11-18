@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { ActivityIndicator, AppState, BackHandler, Platform, View } from 'react-native';
+import { ActivityIndicator, AppState, BackHandler, Platform, StatusBar as AndroidStatusBar, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import {
   useFonts,
@@ -136,7 +136,11 @@ function Principal() {
   }, [id, aba, voltar, config]);
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }}>
-      <StatusBar style="dark" />
+      {Platform.OS === 'android' && Number(Platform.Version) < 35 ? (
+        <AndroidStatusBar barStyle="dark-content" backgroundColor={C.white} />
+      ) : (
+        <StatusBar style="dark" />
+      )}
       <View
         style={{
           flex: 1,
