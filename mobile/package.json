@@ -44,5 +44,10 @@
       "**/tests/**/*.test.ts",
       "**/tests/**/*.test.tsx"
     ]
+  },
+  "overrides": {
+    "@expo/fingerprint": {
+      "minimatch": "11.0.9"
+    }
   }
 }
