@@ -1,0 +1,24 @@
+{
+  "negada": {
+    "permissao": "android.permission.POST_NOTIFICATIONS: granted=false",
+    "recibo": {
+      "id": 97,
+      "alertaId": 65
+    },
+    "avisoInterno": "Prioridade alta · Saúde, Alagamento · abrir alerta #65",
+    "notificacoesDeRiscoNoSistema": []
+  },
+  "concedida": {
+    "permissao": "android.permission.POST_NOTIFICATIONS: granted=true",
+    "recibo": {
+      "id": 98,
+      "alertaId": 66
+    },
+    "avisoInterno": "Prioridade alta · Moema, Calor urbano · abrir alerta #66",
+    "registrosAndroid": [
+      "0|host.exp.exponent|-607330797|alerta-66|10126"
+    ],
+    "tituloNaCortina": "Prioridade alta · Moema",
+    "aposTocar": "Alerta #66"
+  }
+}

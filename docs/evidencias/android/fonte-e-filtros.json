@@ -1,0 +1,36 @@
+{
+  "fontScaleAndroid": "1.3",
+  "filtro": "Falta de energia",
+  "legenda": "1 alerta · em ordem de prioridade",
+  "cardsVisiveis": [
+    "Falta de energia, Vila Mariana, prioridade Média, alerta 35"
+  ],
+  "abas": [
+    [
+      "abrir-painel",
+      "Painel",
+      "[0,1148][180,1280]"
+    ],
+    [
+      "abrir-lista",
+      "Alertas",
+      "[180,1148][360,1280]"
+    ],
+    [
+      "abrir-historico",
+      "Histórico",
+      "[360,1148][540,1280]"
+    ],
+    [
+      "abrir-relato",
+      "Relatar",
+      "[540,1148][720,1280]"
+    ]
+  ],
+  "estadoOffline": "Sem conexão com o servidor",
+  "reconectar": {
+    "rotulo": "Tentar novamente",
+    "boundsPx": "[588,202][684,298]"
+  },
+  "densidade": "Physical density: 320"
+}

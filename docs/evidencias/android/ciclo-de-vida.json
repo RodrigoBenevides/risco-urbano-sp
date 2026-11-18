@@ -1,0 +1,24 @@
+[
+  {
+    "estado": "segundo plano",
+    "segundosAguardados": 6,
+    "recibo": {
+      "id": 130,
+      "alertaId": 97
+    },
+    "notificacoesNativasAntesDeRetomar": [],
+    "avisoAoRetomar": "Prioridade alta · Vila Mariana, Calor urbano · abrir alerta #97",
+    "detalhe": "Alerta #97"
+  },
+  {
+    "estado": "processo encerrado",
+    "segundosAguardados": 6,
+    "recibo": {
+      "id": 131,
+      "alertaId": 98
+    },
+    "notificacoesNativasAntesDeRetomar": [],
+    "avisoAoRetomar": "Prioridade alta · Campo Belo, Alagamento · abrir alerta #98",
+    "detalhe": "Alerta #98"
+  }
+]

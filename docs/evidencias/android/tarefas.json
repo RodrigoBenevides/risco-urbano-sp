@@ -1,0 +1,35 @@
+[
+  {
+    "tarefa": "Abrir o alerta alto a partir do aviso interno",
+    "acoes": {
+      "toques": 1
+    },
+    "duracaoMs": 3012,
+    "resultado": "Alerta #65"
+  },
+  {
+    "tarefa": "Consultar uma observação da estação oficial",
+    "acoes": {
+      "toques": 1
+    },
+    "duracaoMs": 5259,
+    "resultado": [
+      "Chuva acumulada no dia UTC 2025-02-17: 0 mm. Original GSOD: 0.00 in, atributo G. Município de São Paulo/SP (IBGE 3550308).",
+      "NOAA GSOD · Congonhas (83780099999) · 17/02/2025 20:59"
+    ]
+  },
+  {
+    "tarefa": "Registrar falta de energia de 75 minutos",
+    "acoes": {
+      "toques": 4,
+      "rolagens": 1,
+      "entradaTeclado": "75",
+      "voltarAndroid": 1
+    },
+    "duracaoMs": 17279,
+    "resultado": {
+      "confirmacao": "Observação #129 vinculada ao alerta #35.",
+      "tecladoVisivel": true
+    }
+  }
+]

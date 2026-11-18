@@ -1,0 +1,214 @@
+{
+  "medidoEm": "2026-11-18T22:22:09.237164+00:00",
+  "android": "Android SDK built for x86_64",
+  "apiAndroid": "33",
+  "serial": "emulator-5564",
+  "amostras": [
+    {
+      "observacaoId": "258",
+      "alertaId": 1,
+      "atrasoMs": 2728,
+      "sondagens": 1,
+      "duracoesSondaMs": [
+        2728
+      ],
+      "errosSonda": []
+    },
+    {
+      "observacaoId": "259",
+      "alertaId": 1,
+      "atrasoMs": 2959,
+      "sondagens": 1,
+      "duracoesSondaMs": [
+        2959
+      ],
+      "errosSonda": []
+    },
+    {
+      "observacaoId": "260",
+      "alertaId": 1,
+      "atrasoMs": 3171,
+      "sondagens": 1,
+      "duracoesSondaMs": [
+        3171
+      ],
+      "errosSonda": []
+    },
+    {
+      "observacaoId": "261",
+      "alertaId": 1,
+      "atrasoMs": 2928,
+      "sondagens": 1,
+      "duracoesSondaMs": [
+        2928
+      ],
+      "errosSonda": []
+    },
+    {
+      "observacaoId": "262",
+      "alertaId": 1,
+      "atrasoMs": 3145,
+      "sondagens": 1,
+      "duracoesSondaMs": [
+        3145
+      ],
+      "errosSonda": []
+    },
+    {
+      "observacaoId": "263",
+      "alertaId": 1,
+      "atrasoMs": 2989,
+      "sondagens": 1,
+      "duracoesSondaMs": [
+        2989
+      ],
+      "errosSonda": []
+    },
+    {
+      "observacaoId": "264",
+      "alertaId": 1,
+      "atrasoMs": 2994,
+      "sondagens": 1,
+      "duracoesSondaMs": [
+        2994
+      ],
+      "errosSonda": []
+    },
+    {
+      "observacaoId": "265",
+      "alertaId": 1,
+      "atrasoMs": 3051,
+      "sondagens": 1,
+      "duracoesSondaMs": [
+        3051
+      ],
+      "errosSonda": []
+    },
+    {
+      "observacaoId": "266",
+      "alertaId": 1,
+      "atrasoMs": 3030,
+      "sondagens": 1,
+      "duracoesSondaMs": [
+        3030
+      ],
+      "errosSonda": []
+    },
+    {
+      "observacaoId": "267",
+      "alertaId": 1,
+      "atrasoMs": 3008,
+      "sondagens": 1,
+      "duracoesSondaMs": [
+        3008
+      ],
+      "errosSonda": []
+    },
+    {
+      "observacaoId": "268",
+      "alertaId": 1,
+      "atrasoMs": 3118,
+      "sondagens": 1,
+      "duracoesSondaMs": [
+        3118
+      ],
+      "errosSonda": []
+    },
+    {
+      "observacaoId": "269",
+      "alertaId": 1,
+      "atrasoMs": 3089,
+      "sondagens": 1,
+      "duracoesSondaMs": [
+        3089
+      ],
+      "errosSonda": []
+    },
+    {
+      "observacaoId": "270",
+      "alertaId": 1,
+      "atrasoMs": 3051,
+      "sondagens": 1,
+      "duracoesSondaMs": [
+        3051
+      ],
+      "errosSonda": []
+    },
+    {
+      "observacaoId": "271",
+      "alertaId": 1,
+      "atrasoMs": 3089,
+      "sondagens": 1,
+      "duracoesSondaMs": [
+        3089
+      ],
+      "errosSonda": []
+    },
+    {
+      "observacaoId": "272",
+      "alertaId": 1,
+      "atrasoMs": 2990,
+      "sondagens": 1,
+      "duracoesSondaMs": [
+        2990
+      ],
+      "errosSonda": []
+    },
+    {
+      "observacaoId": "273",
+      "alertaId": 1,
+      "atrasoMs": 2988,
+      "sondagens": 1,
+      "duracoesSondaMs": [
+        2988
+      ],
+      "errosSonda": []
+    },
+    {
+      "observacaoId": "274",
+      "alertaId": 1,
+      "atrasoMs": 3140,
+      "sondagens": 1,
+      "duracoesSondaMs": [
+        3140
+      ],
+      "errosSonda": []
+    },
+    {
+      "observacaoId": "275",
+      "alertaId": 1,
+      "atrasoMs": 3086,
+      "sondagens": 1,
+      "duracoesSondaMs": [
+        3086
+      ],
+      "errosSonda": []
+    },
+    {
+      "observacaoId": "276",
+      "alertaId": 1,
+      "atrasoMs": 3018,
+      "sondagens": 1,
+      "duracoesSondaMs": [
+        3018
+      ],
+      "errosSonda": []
+    },
+    {
+      "observacaoId": "277",
+      "alertaId": 1,
+      "atrasoMs": 3066,
+      "sondagens": 1,
+      "duracoesSondaMs": [
+        3066
+      ],
+      "errosSonda": []
+    }
+  ],
+  "visiveis": 20,
+  "planejadas": 20,
+  "medianaMs": 3040.5,
+  "p95Ms": 3145,
+  "maximoMs": 3171,
+  "metodo": "Relógio monotônico do host, do retorno do POST até a primeira árvore visível contendo o ID da nova observação no detalhe. O tempo inclui a coleta por ADB."
+}

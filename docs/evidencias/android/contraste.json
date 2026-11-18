@@ -1,0 +1,65 @@
+{
+  "metodo": "Luminância relativa sRGB dos pares de cores no código da interface. Amostra de dez combinações, texto normal com referência de 4,5:1.",
+  "pares": [
+    {
+      "elemento": "texto principal",
+      "texto": "#122D32",
+      "fundo": "#F1F5F2",
+      "razao": 13.19
+    },
+    {
+      "elemento": "descrição em cartão",
+      "texto": "#446065",
+      "fundo": "#FFFFFF",
+      "razao": 6.76
+    },
+    {
+      "elemento": "data e fonte",
+      "texto": "#4D6568",
+      "fundo": "#FFFFFF",
+      "razao": 6.22
+    },
+    {
+      "elemento": "botão primário",
+      "texto": "#FFFFFF",
+      "fundo": "#006657",
+      "razao": 6.91
+    },
+    {
+      "elemento": "conectado",
+      "texto": "#006657",
+      "fundo": "#E6F3ED",
+      "razao": 6.06
+    },
+    {
+      "elemento": "desconectado",
+      "texto": "#794A07",
+      "fundo": "#FFF3DA",
+      "razao": 6.83
+    },
+    {
+      "elemento": "prioridade alta",
+      "texto": "#9C331B",
+      "fundo": "#FBE6DA",
+      "razao": 6.01
+    },
+    {
+      "elemento": "prioridade média",
+      "texto": "#794A07",
+      "fundo": "#FAEAC9",
+      "razao": 6.32
+    },
+    {
+      "elemento": "prioridade baixa",
+      "texto": "#205F53",
+      "fundo": "#DBEEE4",
+      "razao": 6.15
+    },
+    {
+      "elemento": "aviso de prioridade",
+      "texto": "#81301D",
+      "fundo": "#FBE6DA",
+      "razao": 7.34
+    }
+  ]
+}

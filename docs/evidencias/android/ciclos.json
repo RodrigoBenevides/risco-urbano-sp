@@ -1,0 +1,149 @@
+[
+  {
+    "ciclo": 1,
+    "detecaoQuedaMs": 4200,
+    "bootAteHealthMs": 5298,
+    "recuperacaoAposHealthMs": 4406,
+    "reaberturaAppSemApi": true,
+    "idsVisiveisOffline": [
+      "alerta-36",
+      "alerta-34"
+    ],
+    "idsVisiveisOnline": [
+      "alerta-36",
+      "alerta-34"
+    ],
+    "observacoesAntes": {
+      "36": [
+        68
+      ],
+      "34": [
+        66
+      ],
+      "33": [
+        65
+      ],
+      "1": [
+        33
+      ],
+      "35": [
+        67
+      ]
+    },
+    "observacoesDepois": {
+      "36": [
+        68
+      ],
+      "34": [
+        66
+      ],
+      "33": [
+        65
+      ],
+      "1": [
+        33
+      ],
+      "35": [
+        67
+      ]
+    }
+  },
+  {
+    "ciclo": 2,
+    "detecaoQuedaMs": 4440,
+    "bootAteHealthMs": 6079,
+    "recuperacaoAposHealthMs": 3108,
+    "reaberturaAppSemApi": false,
+    "idsVisiveisOffline": [
+      "alerta-36",
+      "alerta-34"
+    ],
+    "idsVisiveisOnline": [
+      "alerta-36",
+      "alerta-34"
+    ],
+    "observacoesAntes": {
+      "36": [
+        68
+      ],
+      "34": [
+        66
+      ],
+      "33": [
+        65
+      ],
+      "1": [
+        33
+      ],
+      "35": [
+        67
+      ]
+    },
+    "observacoesDepois": {
+      "36": [
+        68
+      ],
+      "34": [
+        66
+      ],
+      "33": [
+        65
+      ],
+      "1": [
+        33
+      ],
+      "35": [
+        67
+      ]
+    }
+  },
+  {
+    "ciclo": 3,
+    "detecaoQuedaMs": 6933,
+    "bootAteHealthMs": 6512,
+    "recuperacaoAposHealthMs": 2495,
+    "reaberturaAppSemApi": false,
+    "idsVisiveisOffline": [
+      "alerta-36",
+      "alerta-34"
+    ],
+    "idsVisiveisOnline": [
+      "alerta-36",
+      "alerta-34"
+    ],
+    "observacoesAntes": {
+      "36": [
+        68
+      ],
+      "34": [
+        66
+      ],
+      "33": [
+        65
+      ],
+      "1": [
+        33
+      ],
+      "35": [
+        67
+      ]
+    },
+    "observacoesDepois": {
+      "36": [
+        68
+      ],
+      "34": [
+        66
+      ],
+      "33": [
+        65
+      ],
+      "1": [
+        33
+      ],
+      "35": [
+        67
+      ]
+    }
+  }
+]

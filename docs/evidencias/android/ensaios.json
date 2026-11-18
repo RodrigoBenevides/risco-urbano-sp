@@ -1,0 +1,64 @@
+[
+  {
+    "ensaio": 1,
+    "alertaId": 1,
+    "baixa": {
+      "recibo": {
+        "id": 133,
+        "alertaId": 1
+      },
+      "texto": "Impacto 1/3 · 3 pontos"
+    },
+    "alta": {
+      "recibo": {
+        "id": 134,
+        "alertaId": 1
+      },
+      "aviso": "Prioridade alta · Vila Mariana, Alagamento · abrir alerta #1"
+    },
+    "duranteQueda": {
+      "estado": "Sem conexão com o servidor",
+      "detalhe": "Alerta #1"
+    },
+    "retorno": {
+      "estado": "Conectado",
+      "recibo": {
+        "id": 161,
+        "alertaId": 1
+      },
+      "noNaTela": "observacao-161"
+    },
+    "observacoesDoAlertaSemDuplicidade": 26
+  },
+  {
+    "ensaio": 2,
+    "alertaId": 1,
+    "baixa": {
+      "recibo": {
+        "id": 163,
+        "alertaId": 1
+      },
+      "texto": "Impacto 1/3 · 3 pontos"
+    },
+    "alta": {
+      "recibo": {
+        "id": 164,
+        "alertaId": 1
+      },
+      "aviso": "Prioridade alta · Vila Mariana, Alagamento · abrir alerta #1"
+    },
+    "duranteQueda": {
+      "estado": "Sem conexão com o servidor",
+      "detalhe": "Alerta #1"
+    },
+    "retorno": {
+      "estado": "Conectado",
+      "recibo": {
+        "id": 193,
+        "alertaId": 1
+      },
+      "noNaTela": "observacao-193"
+    },
+    "observacoesDoAlertaSemDuplicidade": 30
+  }
+]
