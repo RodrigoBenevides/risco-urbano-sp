@@ -1,0 +1,37 @@
+{
+  "finalidade": "Amostra histórica offline de observações meteorológicas em Congonhas e identificação oficial do município de São Paulo.",
+  "coleta_utc": "2026-11-18T21:48:46Z",
+  "arquivos": [
+    {
+      "arquivo": "congonhas-2025.csv",
+      "fornecedor": "NOAA National Centers for Environmental Information",
+      "conjunto": "Global Surface Summary of the Day (GSOD)",
+      "estacao": "83780099999",
+      "datas": [
+        "2025-02-01",
+        "2025-02-17"
+      ],
+      "intervalo": "Resumo diário em UTC",
+      "url": "https://www.ncei.noaa.gov/data/global-summary-of-the-day/access/2025/83780099999.csv",
+      "metadados": "https://www.ncei.noaa.gov/metadata/geoportal/rest/metadata/item/gov.noaa.ncdc%3AC00516/html",
+      "selecao": "Cabeçalho e duas linhas originais, preservadas todas as colunas; quebras de linha LF.",
+      "sha256_original": "9c781271837fcb285732cca4475f13370b3ca0287e7c92e28854fe733c1b398f",
+      "sha256": "7445cd57446615e8e762ca39d32264e1321696c6d888fac77d285e69012461a0",
+      "unidades": {
+        "TEMP": "Temperatura média diária em graus Fahrenheit. Para Celsius, (TEMP - 32) * 5 / 9.",
+        "PRCP": "Precipitação acumulada diária em polegadas. Para milímetros, PRCP * 25,4."
+      },
+      "qualidade": "Preservar os atributos originais de cada medida. Descartar o marcador 99.99 de precipitação ausente e 9999.9 de temperatura ausente. A precipitação diária indica contexto meteorológico e a temperatura média de uma estação descreve somente o ponto observado."
+    },
+    {
+      "arquivo": "sao-paulo-ibge.json",
+      "fornecedor": "Instituto Brasileiro de Geografia e Estatística",
+      "conjunto": "API de Localidades",
+      "identificador": 3550308,
+      "url": "https://servicodados.ibge.gov.br/api/v1/localidades/municipios/3550308",
+      "metadados": "https://servicodados.ibge.gov.br/api/docs/localidades",
+      "selecao": "Resposta integral referente ao município; valida a localidade e UF associadas à estação.",
+      "sha256": "548a2172a3e38ccd9a8a35f832a368a860a01d868e4011226a78abbb42329ea0"
+    }
+  ]
+}
