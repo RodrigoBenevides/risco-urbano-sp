@@ -1,0 +1,22 @@
+cenario,tipo,valor,idadeMin,origem,segunda,pontos,esperado,ativo
+Agua 4 cm,ALAGAMENTO,4,0,SENSOR,NENHUMA,3,BAIXA,true
+Agua limiar 5 cm,ALAGAMENTO,5,0,SENSOR,NENHUMA,5,MEDIA,true
+Agua inferior a 20 cm,ALAGAMENTO,19.999,0,SENSOR,NENHUMA,5,MEDIA,true
+Agua critica 20 cm,ALAGAMENTO,20,0,SENSOR,NENHUMA,7,ALTA,true
+Agua critica 22 cm,ALAGAMENTO,22,0,SENSOR,NENHUMA,7,ALTA,true
+Calor abaixo de 2 graus,CALOR,1.9,0,SENSOR,NENHUMA,3,BAIXA,true
+Calor limiar de 2 graus,CALOR,2,0,SENSOR,NENHUMA,5,MEDIA,true
+Calor limiar de 4 graus,CALOR,4,0,SENSOR,NENHUMA,7,ALTA,true
+Calor par 35 e 30 graus,CALOR,5,0,SENSOR,NENHUMA,7,ALTA,true
+Energia abaixo de 15 minutos,ENERGIA,14,0,COMUNIDADE,NENHUMA,3,BAIXA,true
+Energia em 15 minutos,ENERGIA,15,0,COMUNIDADE,NENHUMA,5,MEDIA,true
+Energia isolada em 60 minutos,ENERGIA,60,0,COMUNIDADE,NENHUMA,7,MEDIA,true
+Limite de recencia inclusivo,ALAGAMENTO,22,30,SENSOR,NENHUMA,7,ALTA,true
+Recencia expirada,ALAGAMENTO,22,31,SENSOR,NENHUMA,6,MEDIA,true
+Limite de atividade inclusivo,ALAGAMENTO,22,120,SENSOR,NENHUMA,6,MEDIA,true
+Episodio inativo,ALAGAMENTO,22,121,SENSOR,NENHUMA,6,MEDIA,false
+Sensores confirmam impacto alto,ALAGAMENTO,22,0,SENSOR,INDEPENDENTE,8,ALTA,true
+Releitura nao confirma,CALOR,5,0,SENSOR,REPETICAO,7,ALTA,true
+Fontes divergem sobre gravidade,ALAGAMENTO,22,0,SENSOR,DIVERGENTE,7,ALTA,true
+Relatos anonimos nao confirmam,ENERGIA,90,0,COMUNIDADE,REPETICAO,7,MEDIA,true
+Queda de lamina no mesmo sensor,ALAGAMENTO,22,0,SENSOR,RECUO,3,BAIXA,true
