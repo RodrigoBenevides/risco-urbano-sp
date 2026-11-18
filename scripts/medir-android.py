@@ -4,6 +4,7 @@ import argparse
 import json
 import math
 import os
+import re
 import statistics
 import subprocess
 import time
@@ -37,8 +38,17 @@ def contem_observacao(prefixo, arquivo, identificador):
     xml = executar_adb(prefixo, "exec-out", "cat", arquivo)
     arvore = ET.fromstring(xml)
     nome = "observacao-" + identificador
-    return any(no.get("resource-id", "").split("/")[-1] == nome
-               or no.get("content-desc") == nome for no in arvore.iter("node"))
+    for no in arvore.iter("node"):
+        corresponde = (no.get("resource-id", "").split("/")[-1] == nome
+                       or no.get("content-desc") == nome
+                       or no.get("text") == f"Observação #{identificador}")
+        if corresponde:
+            coordenadas = re.fullmatch(r"\[(-?\d+),(-?\d+)\]\[(-?\d+),(-?\d+)\]", no.get("bounds", ""))
+            if coordenadas:
+                esquerda, topo, direita, base = map(int, coordenadas.groups())
+                if direita > esquerda and base > topo:
+                    return True
+    return False
 
 
 def principal():
