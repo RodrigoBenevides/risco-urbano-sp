@@ -1,0 +1,81 @@
+SELECT
+    "RECENTES"."ID",
+    "RECENTES"."CHAVE",
+    "RECENTES"."ASSINATURA",
+    "RECENTES"."ALERTA_ID",
+    "RECENTES"."TIPO",
+    "RECENTES"."BAIRRO",
+    "RECENTES"."ORIGEM",
+    "RECENTES"."FONTE",
+    "RECENTES"."CONFIANCA",
+    "RECENTES"."MOTIVO_CONFIANCA",
+    "RECENTES"."OBSERVADO_EM",
+    "RECENTES"."RECEBIDO_EM",
+    "RECENTES"."DESCRICAO",
+    "RECENTES"."IMPACTO",
+    "RECENTES"."VALOR",
+    "RECENTES"."UNIDADE",
+    "RECENTES"."REFERENCIA",
+    "RECENTES"."REFERENCIA_EM",
+    "RECENTES"."POSICAO"
+FROM (
+    SELECT
+        "O"."ID",
+        "O"."CHAVE",
+        "O"."ASSINATURA",
+        "O"."ALERTA_ID",
+        "O"."TIPO",
+        "O"."BAIRRO",
+        "O"."ORIGEM",
+        "O"."FONTE",
+        "O"."CONFIANCA",
+        "O"."MOTIVO_CONFIANCA",
+        "O"."OBSERVADO_EM",
+        "O"."RECEBIDO_EM",
+        "O"."DESCRICAO",
+        "O"."IMPACTO",
+        "O"."VALOR",
+        "O"."UNIDADE",
+        "O"."REFERENCIA",
+        "O"."REFERENCIA_EM",
+        ROW_NUMBER() OVER (PARTITION BY "O"."ALERTA_ID", "O"."FONTE" ORDER BY "O"."OBSERVADO_EM" DESC, "O"."ID" DESC) AS "POSICAO"
+    FROM "PUBLIC"."ALERTA" "A"
+    INNER JOIN "PUBLIC"."OBSERVACAO" "O"
+        ON 1=1
+    WHERE ("O"."ALERTA_ID" = "A"."ID")
+        AND ("A"."ULTIMA" >= ?1)
+        AND ("O"."OBSERVADO_EM" >= ?2)
+) "RECENTES"
+    /* SELECT
+        O.ID,
+        O.CHAVE,
+        O.ASSINATURA,
+        O.ALERTA_ID,
+        O.TIPO,
+        O.BAIRRO,
+        O.ORIGEM,
+        O.FONTE,
+        O.CONFIANCA,
+        O.MOTIVO_CONFIANCA,
+        O.OBSERVADO_EM,
+        O.RECEBIDO_EM,
+        O.DESCRICAO,
+        O.IMPACTO,
+        O.VALOR,
+        O.UNIDADE,
+        O.REFERENCIA,
+        O.REFERENCIA_EM,
+        ROW_NUMBER() OVER (PARTITION BY O.ALERTA_ID, O.FONTE ORDER BY O.OBSERVADO_EM DESC, O.ID DESC) AS POSICAO
+    FROM PUBLIC.ALERTA A
+        /* PUBLIC.ALERTA_ATIVIDADE: ULTIMA >= ?1 */
+        /* WHERE A.ULTIMA >= ?1
+        */
+    INNER JOIN PUBLIC.OBSERVACAO O
+        /* PUBLIC.CONSTRAINT_INDEX_1: ALERTA_ID = A.ID */
+        ON 1=1
+    WHERE (O.ALERTA_ID = A.ID)
+        AND (O.OBSERVADO_EM >= ?2)
+        AND (A.ULTIMA >= ?1)
+    QUALIFY ?3 IS NOT DISTINCT FROM ?3: POSICAO = CAST(1 AS BIGINT)
+     */
+WHERE "POSICAO" = CAST(1 AS BIGINT)

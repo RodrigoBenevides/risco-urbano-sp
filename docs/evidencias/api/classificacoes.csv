@@ -1,0 +1,22 @@
+cenario,esperada,obtida,pontos,ativo
+Agua 4 cm,BAIXA,BAIXA,3,true
+Agua limiar 5 cm,MEDIA,MEDIA,5,true
+Agua inferior a 20 cm,MEDIA,MEDIA,5,true
+Agua critica 20 cm,ALTA,ALTA,7,true
+Agua critica 22 cm,ALTA,ALTA,7,true
+Calor abaixo de 2 graus,BAIXA,BAIXA,3,true
+Calor limiar de 2 graus,MEDIA,MEDIA,5,true
+Calor limiar de 4 graus,ALTA,ALTA,7,true
+Calor par 35 e 30 graus,ALTA,ALTA,7,true
+Energia abaixo de 15 minutos,BAIXA,BAIXA,3,true
+Energia em 15 minutos,MEDIA,MEDIA,5,true
+Energia isolada em 60 minutos,MEDIA,MEDIA,7,true
+Limite de recencia inclusivo,ALTA,ALTA,7,true
+Recencia expirada,MEDIA,MEDIA,6,true
+Limite de atividade inclusivo,MEDIA,MEDIA,6,true
+Episodio inativo,MEDIA,MEDIA,6,false
+Sensores confirmam impacto alto,ALTA,ALTA,8,true
+Releitura nao confirma,ALTA,ALTA,7,true
+Fontes divergem sobre gravidade,ALTA,ALTA,7,true
+Relatos anonimos nao confirmam,MEDIA,MEDIA,7,true
+Queda de lamina no mesmo sensor,BAIXA,BAIXA,3,true
