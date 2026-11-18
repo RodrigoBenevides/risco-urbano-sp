@@ -8,7 +8,11 @@ Projeto da Global Solution 2026.2 de **Advanced Programming And Mobile Dev**, En
 
 ## Integrantes
 
-A identificação acadêmica aguarda os nomes completos e RMs fornecidos pelo grupo.
+| Nome completo | RM |
+| --- | --- |
+| Caio Tadeu da Silva Faraleski | 558795 |
+| Rodrigo Caruzzo Benevides | 554665 |
+| Eduardo do Nascimento Souza | 558819 |
 
 ## Executar no Windows
 
