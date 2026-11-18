@@ -1,6 +1,10 @@
 package br.com.riscourbano;
 
 import java.util.Map;
+import jakarta.servlet.http.HttpServletRequest;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import org.springframework.http.HttpStatus;
 import org.springframework.context.annotation.Profile;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -51,5 +55,9 @@ class ApiDemonstracao {
     ApiDemonstracao(Monitoramento servico) { this.servico = servico; }
 
     @PostMapping(value="/sensores", consumes="application/json")
-    ResponseEntity<Recibo> sensor(@RequestBody Medicao medicao) { return Api.resposta(servico.simular(medicao)); }
+    ResponseEntity<Recibo> sensor(@RequestBody Medicao medicao, HttpServletRequest request) throws UnknownHostException {
+        if (!InetAddress.getByName(request.getRemoteAddr()).isLoopbackAddress())
+            throw new Falha(HttpStatus.FORBIDDEN, "origem", "A simulação só está disponível no computador que executa a API.");
+        return Api.resposta(servico.simular(medicao));
+    }
 }

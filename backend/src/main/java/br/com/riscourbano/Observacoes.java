@@ -68,18 +68,24 @@ class Observacoes {
         return id;
     }
 
-    List<Evidencia> evidenciasAtivas(Tipo tipo, String bairro, Instant limite) {
+    static String consultaAtivas(Tipo tipo, String bairro) {
         StringBuilder sql = new StringBuilder("""
                 SELECT * FROM (SELECT o.*, ROW_NUMBER() OVER (
                 PARTITION BY o.alerta_id,o.fonte ORDER BY o.observado_em DESC,o.id DESC) AS posicao
                 FROM alerta a JOIN observacao o ON o.alerta_id=a.id
                 WHERE a.ultima>=? AND o.observado_em>=?
                 """);
-        List<Object> args = new ArrayList<>(List.of(utc(limite), utc(limite)));
-        if (tipo != null) { sql.append(" AND a.tipo=?"); args.add(tipo.name()); }
-        if (bairro != null) { sql.append(" AND a.bairro=?"); args.add(bairro); }
+        if (tipo != null) sql.append(" AND a.tipo=?");
+        if (bairro != null) sql.append(" AND a.bairro=?");
         sql.append(") recentes WHERE posicao=1");
-        return jdbc.query(sql.toString(), Observacoes::ler, args.toArray());
+        return sql.toString();
+    }
+
+    List<Evidencia> evidenciasAtivas(Tipo tipo, String bairro, Instant limite) {
+        List<Object> args = new ArrayList<>(List.of(utc(limite), utc(limite)));
+        if (tipo != null) args.add(tipo.name());
+        if (bairro != null) args.add(bairro);
+        return jdbc.query(consultaAtivas(tipo, bairro), Observacoes::ler, args.toArray());
     }
 
     List<Evidencia> porAlerta(long id) {

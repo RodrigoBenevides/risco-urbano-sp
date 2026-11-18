@@ -114,11 +114,25 @@ class ApiTest {
         assertEquals("duracaoMinutos", post("/api/relatos", rel).corpo.path("campo").asText());
         rel.put("duracaoMinutos", 6); rel.put("gps", "dado que não deve ser gravado");
         assertEquals(400, post("/api/relatos", rel).status);
+        rel.remove("gps");
+        String corpo = json.writeValueAsString(rel);
+        assertEquals(400, enviar("/api/relatos", corpo + " {}").status);
+        assertEquals(400, enviar("/api/relatos", corpo.replace("\"Moema\"", "\"Moema\",\"bairro\":\"Saúde\"")).status);
+        assertEquals(0, enviar("/api/observacoes?origem=COMUNIDADE", null).corpo.path("total").asInt());
         assertEquals(413, enviar("/api/relatos", "x".repeat(8200)).status);
         assertEquals(400, enviar("/api/alertas?size=51", null).status);
         assertEquals(400, enviar("/api/alertas?page=-1", null).status);
         assertEquals(400, enviar("/api/alertas?tipo=tudo", null).status);
         assertEquals(400, enviar("/api/alertas?bairro=ausente", null).status);
+    }
+
+    @Test void simuladorExigeConexaoLocalMesmoNoPerfilDemo() {
+        var request = new org.springframework.mock.web.MockHttpServletRequest();
+        request.setRemoteAddr("192.0.2.10");
+        request.addHeader("X-Forwarded-For", "127.0.0.1");
+        var api = new ApiDemonstracao(org.mockito.Mockito.mock(Monitoramento.class));
+        var erro = assertThrows(Falha.class, () -> api.sensor(null, request));
+        assertEquals(403, erro.status.value());
     }
 
     @Test void importacaoPublicaIdempotenteSemAlertaAtual() throws Exception {
