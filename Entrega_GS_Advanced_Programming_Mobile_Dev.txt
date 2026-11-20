@@ -3,3 +3,6 @@ Rodrigo Caruzzo Benevides — RM 554665
 Eduardo do Nascimento Souza — RM 558819
 
 https://github.com/RodrigoBenevides/risco-urbano-sp
+
+Vídeo de demonstração (YouTube):
+https://youtu.be/4ALys6TXP9k

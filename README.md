@@ -8,7 +8,7 @@ Projeto da Global Solution 2026.2 de **Advanced Programming And Mobile Dev**, En
 
 ## Vídeo de demonstração
 
-A gravação mostra o alerta de alagamento subir de prioridade no Android, o registro comunitário, o histórico de Congonhas e a recuperação do aplicativo após a queda da API. São 3min23s, com legendas em português e sem áudio. [Baixar a demonstração em MP4 (28,4 MB)](https://github.com/RodrigoBenevides/risco-urbano-sp/releases/download/demonstracao-v1/Demonstracao_Risco_Urbano_SP.mp4)
+A gravação mostra o alerta de alagamento subir de prioridade no Android, o registro comunitário, o histórico de Congonhas e a recuperação do aplicativo após a queda da API. São 3min23s, com legendas em português e sem áudio. [Assistir no YouTube](https://youtu.be/4ALys6TXP9k) · [Baixar a demonstração em MP4 (28,4 MB)](https://github.com/RodrigoBenevides/risco-urbano-sp/releases/download/demonstracao-v1/Demonstracao_Risco_Urbano_SP.mp4)
 
 ## Integrantes
 
